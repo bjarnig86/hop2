@@ -47,5 +47,6 @@
   },
   "dependencies": {
     "rollup": "^2.33.2"
-  }
+  },
+  "keywords": []
 }
