@@ -28,7 +28,7 @@ console.log(data.categories);
         if (rCheck) {
         const video = element('div', { class: 'col col-4 col-sm-12' }, null, null, ' ',
           element('div', { class: 'card' }, null, null, ' ' ,
-            element('img', {src: videos.poster, class: 'card__video' }, null, null, ' '),
+            element('img', {src: videos.poster, class: 'card__poster' }, null, null, ' '),
             element('h3', { class: 'card__title' }, null, null, `${videos.title}`),
             element('p', { class: 'card__created' }, null, null, `${formatDate(videos.created)}`)));
             videoRow.appendChild(video);
