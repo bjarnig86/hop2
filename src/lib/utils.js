@@ -68,6 +68,18 @@ export function empty(el) {
   }
 }
 
+export function isRelated(video,id) {
+  if (video.length === 0) {
+    return true;
+  }
+  for (let i = 0; i < video.length; i++) {
+      if (video[i] === id){
+        return true;
+    }
+  }
+  return false;
+}
+
 /**
  * Format a timestamp as dd.mm.yyyy hh:mm:ss e.g. "01.11.2020 12:00:00".
  *
@@ -76,6 +88,6 @@ export function empty(el) {
  */
 export function formatDate(timestamp) {
   // TODO Útfæra með „vanilla JS“ eða nota date-fns pakka
-  const time = format();
+  const time = format(timestamp, 'dd/MM/yyyy kk:mm:ss');
   return time;
 }
