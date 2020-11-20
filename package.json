@@ -7,14 +7,14 @@
     "build": "rollup -c",
     "rollup-watch": "rollup -c -w",
     "browser-sync": "browser-sync start --server --files index.html dist/bundle.js styles.css",
-    "dev": "concurrently npm:browser-sync npm:rollup-watch",
+    "dev": "concurrently npm:sass-watch npm:browser-sync npm:rollup-watch",
     "superdev": "concurrently \"browser-sync start --server --files index.html dist/bundle.js styles.css\" \"rollup -c -w\"",
     "test": "eslint src/**",
     "lint-css": "stylelint styles.css",
     "lint-scss": "stylelint styles.scss --syntax scss",
     "lint": "stylelint styles.scss ./**/*.scss",
     "sass-watch": "node-sass --source-map-embed --watch styles.scss --recursive styles.css",
-    "sass": "node-sass --source-map-embed styles.scss styles.css -w"
+    "sass": "node-sass --source-map-embed styles.scss styles.css"
   },
   "repository": {
     "type": "git",
