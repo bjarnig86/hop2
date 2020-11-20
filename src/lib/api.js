@@ -15,6 +15,6 @@ export async function fetchVideo() {
     }
 
     response = await response.json();
-    console.log(response);
-    return response.joke;
+    // console.log(response);
+    return response;
 }

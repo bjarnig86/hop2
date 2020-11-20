@@ -1,11 +1,10 @@
-
 // Sækja config
 @import './config';
 
 // Hér skal nota scss @for til að ítra út klösum fyrir grid
 .grid {
   margin: 0 auto;
-  max-width: 1400px;
+  max-width: $max-width;
   overflow: hidden;
 }
 
