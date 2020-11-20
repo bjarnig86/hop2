@@ -2,22 +2,22 @@ import { fetchVideo } from './lib/api';
 import { el, element, empty, isRelated, formatDate } from './lib/utils';
 
 document.addEventListener('DOMContentLoaded', async () => {
-const line = document.createElement('hr');
 const main = document.querySelector('main');
 const data = await fetchVideo();
 console.log(data);
 console.log(data.categories);
 
   data.categories.forEach(categories => {
+    const line = element('hr', { class: 'line col col-10 offset-col-1' }, null, null, ' ');
     const catVidRel = categories.videos;
-    console.log(catVidRel);
     const videoRow = element('div', { class: `row videoRow` }, null, null, ' ');
     const category = el('section',
       element('div', { class: 'grid' }, null,null, ' ',
         element('div', { class: 'row' }, null, null, ' ',
           element('div', { class: 'col col-12' }, null, null, ' ',
             element('h2', { class: 'category__title' }, null, null, `${categories.title}`))),
-        videoRow));
+        videoRow,
+        line));
       main.appendChild(category);
 
       data.videos.forEach(videos => {
@@ -33,8 +33,6 @@ console.log(data.categories);
             element('p', { class: 'card__created' }, null, null, `${formatDate(videos.created)}`)));
             videoRow.appendChild(video);
           }
-          main.appendChild(line);
       });
-      main.appendChild(line);
   });
 });
