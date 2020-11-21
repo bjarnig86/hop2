@@ -80,6 +80,17 @@ export function isRelated(video,id) {
   return false;
 }
 
+export function allRelated(id, related) {
+  for (let i = 0; i < related.length; i++) {
+    for (let j = 0; j < related.length; j++) {
+      id[i] = array[j];
+      return true;
+    }
+
+  }
+  return false;
+}
+
 /**
  * Format a timestamp as dd.mm.yyyy hh:mm:ss e.g. "01.11.2020 12:00:00".
  *

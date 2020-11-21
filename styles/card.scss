@@ -1,8 +1,35 @@
+
+a > img {
+  height: 250px;
+  width: 100% ;
+}
+
 .card {
   display: flex;
   flex-direction: column;
 
-  &__video {
-    object-fit: cover;
+  h3 {
+    font-size: 1.25rem;
   }
+
+  &__poster {
+    display:flex;
+    object-fit: contain;
+  }
+
+  .lineContainer {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+
+.created {
+  position: relative ;
+  max-width: 50px;
+  text-align: center;
+  margin-bottom: 100px;
+  margin-left: 380px;
+  margin-top: -45px;
+  font-size: 1rem;
+
 }
