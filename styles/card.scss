@@ -8,8 +8,23 @@ a > img {
   display: flex;
   flex-direction: column;
 
+  h3 {
+    font-size: 1.25rem;
+  }
+
   &__poster {
     display:flex;
     object-fit: contain;
   }
+}
+
+.created {
+  position: relative ;
+  max-width: 50px;
+  text-align: center;
+  margin-bottom: 100px;
+  margin-left: 380px;
+  margin-top: -45px;
+  font-size: 1rem;
+  
 }
