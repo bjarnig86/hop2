@@ -106,9 +106,6 @@ export function formatDate(timestamp) {
   const minute = 60;
 
   let timeDifference = (timeInSec - created) / minute;
-  console.log(created);
-  console.log(timeInSec);
-  console.log(timeDifference);
 
   const hour = 60*minute;
   const day = 24*hour;
@@ -177,4 +174,14 @@ export function formatDate(timestamp) {
   }
 
   return `Sett inn ${format(timestamp, 'dd/MM/yyyy kk:mm:ss')}`;
+}
+
+export function setDuration(duration) {
+  const dur = duration;
+  let m = parseInt(dur/60, 10);
+  let s = dur % 60;
+  if (s < 10) {
+    return m + ':' + '0' + s;
+  }
+  return m + ':' + s;
 }

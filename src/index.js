@@ -1,5 +1,5 @@
 import { fetchVideo } from './lib/api';
-import { el, element, empty, isRelated, formatDate } from './lib/utils';
+import { el, element, empty, isRelated, formatDate , setDuration} from './lib/utils';
 
 document.addEventListener('DOMContentLoaded', async () => {
 const main = document.querySelector('main');
@@ -28,7 +28,9 @@ console.log(data.categories);
         if (rCheck) {
         const video = element('div', { class: 'col col-4 col-sm-12' }, null, null, ' ',
           element('div', { class: 'card' }, null, null, ' ' ,
-            element('img', {src: videos.poster, class: 'card__poster' }, null, null, ' '),
+            element('div', { class: 'img__container' }, null, null, ' ',
+              element('img', { src: videos.poster, class: 'card__poster' }, null, null, ' '),
+              element('p', { class: 'img__duration' }, null, null, `${setDuration(videos.duration)}`)),
             element('h3', { class: 'card__title' }, null, null, `${videos.title}`),
             element('p', { class: 'card__created' }, null, null, `${formatDate(videos.created)}`)));
             videoRow.appendChild(video);
