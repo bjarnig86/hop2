@@ -81,9 +81,9 @@ export function isRelated(video,id) {
 }
 
 export function allRelated(id, related) {
-  for (let i = 0; i < related.length; i++) {
+  for (let i = 0; i < id.length; i++) {
     for (let j = 0; j < related.length; j++) {
-      id[i] = array[j];
+      id[i] = related[j];
       return true;
     }
 
