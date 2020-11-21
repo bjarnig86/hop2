@@ -88,6 +88,6 @@ export function isRelated(video,id) {
  */
 export function formatDate(timestamp) {
   // TODO Útfæra með „vanilla JS“ eða nota date-fns pakka
-  const time = format(timestamp, 'dd/MM/yyyy kk:mm:ss');
-  return time;
+  const created = format(timestamp, 'dd/MM/yyyy kk:mm:ss');
+  return created;
 }

@@ -17,7 +17,8 @@ console.log(data.categories);
           element('div', { class: 'col col-12' }, null, null, ' ',
             element('h2', { class: 'category__title' }, null, null, `${categories.title}`))),
         videoRow,
-        line));
+        element('div', { class: 'lineContainer' }, null, null, ' ',
+        line)));
       main.appendChild(category);
 
       data.videos.forEach(videos => {
