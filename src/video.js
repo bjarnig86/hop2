@@ -27,6 +27,7 @@ const related = videos.related;
 const id = videos.id;
 const rCheck = allRelated(id, related);
 
+data.videos.forEach(related => {
 if (rCheck) {
 const relatedVideos =
 element('div', { class: 'grid' }, null,null, ' ',
@@ -44,3 +45,6 @@ element('div', { class: 'grid' }, null,null, ' ',
 }
 
 });
+});
+
+

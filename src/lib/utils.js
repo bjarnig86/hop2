@@ -1,4 +1,6 @@
-import { format } from "date-fns";
+import {
+  format
+} from "date-fns";
 
 /**
  * Create an element with attributes and events, and append elements or
@@ -68,13 +70,13 @@ export function empty(el) {
   }
 }
 
-export function isRelated(video,id) {
+export function isRelated(video, id) {
   if (video.length === 0) {
     return true;
   }
   for (let i = 0; i < video.length; i++) {
-      if (video[i] === id){
-        return true;
+    if (video[i] === id) {
+      return true;
     }
   }
   return false;
@@ -89,6 +91,19 @@ export function allRelated(id, related) {
 
   }
   return false;
+}
+
+// Fall sem nær í gildi úr querystring eftir breytu
+function getQueryVariable(variable) {
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i = 0; i < vars.length; i++) {
+    var pair = vars[i].split("=");
+    if (decodeURIComponent(pair[0]) == variable) {
+      return decodeURIComponent(pair[1]);
+    }
+  }
+  console.log("Query variable %s not found", variable);
 }
 
 /**
@@ -107,11 +122,11 @@ export function formatDate(timestamp) {
 
   let timeDifference = (timeInSec - created) / minute;
 
-  const hour = 60*minute;
-  const day = 24*hour;
-  const week = 7*day;
-  const month = 4*week;
-  const year = 12*month;
+  const hour = 60 * minute;
+  const day = 24 * hour;
+  const week = 7 * day;
+  const month = 4 * week;
+  const year = 12 * month;
 
   let x;
 
@@ -120,56 +135,56 @@ export function formatDate(timestamp) {
   }
 
   if (timeDifference < hour) {
-    x = Math.round(timeDifference/minute);
+    x = Math.round(timeDifference / minute);
     if (x % 10 === 1 && x !== 11) {
       return `Fyrir ${x} mínútu síðan`
     } else {
-    return `Fyrir ${x} mínútum síðan`;
+      return `Fyrir ${x} mínútum síðan`;
     }
   }
 
   if (timeDifference < day) {
-    x = Math.round(timeDifference/hour);
+    x = Math.round(timeDifference / hour);
     if (x % 10 === 1 && x !== 11) {
       return `Fyrir ${x} klukkustund síðan`
     } else {
-    return `Fyrir ${x} klukkustundum síðan`;
+      return `Fyrir ${x} klukkustundum síðan`;
     }
   }
 
   if (timeDifference < week) {
-    x = Math.round(timeDifference/day);
+    x = Math.round(timeDifference / day);
     if (x % 10 === 1 && x !== 11) {
       return `Fyrir ${x} degi síðan`
     } else {
-    return `Fyrir ${x} dögum síðan`;
+      return `Fyrir ${x} dögum síðan`;
     }
   }
 
   if (timeDifference < month) {
-    x = Math.round(timeDifference/week);
+    x = Math.round(timeDifference / week);
     if (x % 10 === 1 && x !== 11) {
       return `Fyrir ${x} viku síðan`
     } else {
-    return `Fyrir ${x} vikum síðan`;
+      return `Fyrir ${x} vikum síðan`;
     }
   }
 
   if (timeDifference < year) {
-    x = Math.round(timeDifference/month);
+    x = Math.round(timeDifference / month);
     if (x % 10 === 1 && x !== 11) {
       return `Fyrir ${x} mánuði síðan`
     } else {
-    return `Fyrir ${x} mánuðum síðan`;
+      return `Fyrir ${x} mánuðum síðan`;
     }
   }
 
   if (timeDifference >= year) {
-    x = Math.round(timeDifference/year);
+    x = Math.round(timeDifference / year);
     if (x % 10 === 1 && x !== 11) {
       return `Fyrir ${x} ári síðan`
     } else {
-    return `Fyrir ${x} árum síðan`;
+      return `Fyrir ${x} árum síðan`;
     }
   }
 
@@ -178,7 +193,7 @@ export function formatDate(timestamp) {
 
 export function setDuration(duration) {
   const dur = duration;
-  let m = parseInt(dur/60, 10);
+  let m = parseInt(dur / 60, 10);
   let s = dur % 60;
   if (s < 10) {
     return m + ':' + '0' + s;
