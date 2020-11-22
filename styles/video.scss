@@ -1,0 +1,45 @@
+.video {
+  &__title {
+    font-size: 3em;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  &__description {
+    font-size: 1.25em;
+    margin-bottom: 20px;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  &__actions > img {
+    display: flex;
+    margin: 10px;
+    max-height: 20px;
+  }
+
+  &__poster__container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    object-fit: cover;
+    position: relative;
+  }
+
+  &__poster__container > .play {
+    background-color: rgba(77, 75, 75, 0.7);
+    height: 100px;
+    padding: 20px;
+    position: absolute;
+  }
+
+  &__poster {
+    width: 100%;
+  }
+}
