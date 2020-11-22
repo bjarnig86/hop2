@@ -114,75 +114,71 @@ function getQueryVariable(variable) {
  */
 export function formatDate(timestamp) {
   // TODO Útfæra með „vanilla JS“ eða nota date-fns pakka
-  const created = timestamp;
-  let currentDate = new Date();
-  let timeInSec = currentDate.getTime();
+  const currentDate = new Date();
+  const timeInMS = currentDate.getTime();
 
-  const minute = 60;
-
-  let timeDifference = (timeInSec - created) / minute;
-
+  const timeDifference = (timeInMS - timestamp);
+  const second = 1000;
+  const minute = 60*second;
   const hour = 60 * minute;
   const day = 24 * hour;
   const week = 7 * day;
   const month = 4 * week;
   const year = 12 * month;
 
-  let x;
-
   if (timeDifference < minute) {
     return `Fyrir minna en mínútu síðan`;
   }
 
   if (timeDifference < hour) {
-    x = Math.round(timeDifference / minute);
+    const x = Math.round(timeDifference / minute);
     if (x % 10 === 1 && x !== 11) {
-      return `Fyrir ${x} mínútu síðan`
+      return `Fyrir ${x} mínútu síðan`;
     } else {
       return `Fyrir ${x} mínútum síðan`;
     }
   }
 
   if (timeDifference < day) {
-    x = Math.round(timeDifference / hour);
+    const x = Math.round(timeDifference / hour);
     if (x % 10 === 1 && x !== 11) {
-      return `Fyrir ${x} klukkustund síðan`
+      return `Fyrir ${x} klukkustund síðan`;
     } else {
       return `Fyrir ${x} klukkustundum síðan`;
     }
   }
 
   if (timeDifference < week) {
-    x = Math.round(timeDifference / day);
+    const x = Math.round(timeDifference / day);
     if (x % 10 === 1 && x !== 11) {
-      return `Fyrir ${x} degi síðan`
+      return `Fyrir ${x} degi síðan`;
     } else {
       return `Fyrir ${x} dögum síðan`;
     }
   }
 
   if (timeDifference < month) {
-    x = Math.round(timeDifference / week);
+    const x = Math.round(timeDifference / week);
     if (x % 10 === 1 && x !== 11) {
-      return `Fyrir ${x} viku síðan`
+      return `Fyrir ${x} viku síðan`;
     } else {
       return `Fyrir ${x} vikum síðan`;
     }
   }
 
   if (timeDifference < year) {
-    x = Math.round(timeDifference / month);
+    const x = Math.round(timeDifference / month);
     if (x % 10 === 1 && x !== 11) {
-      return `Fyrir ${x} mánuði síðan`
+      return `Fyrir ${x} mánuði síðan`;
     } else {
       return `Fyrir ${x} mánuðum síðan`;
     }
   }
 
   if (timeDifference >= year) {
-    x = Math.round(timeDifference / year);
+    const x = Math.round(timeDifference / year);
     if (x % 10 === 1 && x !== 11) {
-      return `Fyrir ${x} ári síðan`
+      return `Fyrir ${x} ári síðan`;
     } else {
       return `Fyrir ${x} árum síðan`;
     }
