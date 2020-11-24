@@ -5,11 +5,11 @@ export async function frontpage() {
   const main = el('main', ' ');
   const frontpageBody = document.querySelector('body');
 
-  const header = element('header', { class: 'frontpage__header' }, null, null, '',
-  element('div', { class: 'grid'}, null, null, ' ',
-  element('div', { class: 'row' }, null, null, ' ',
-  element('div', { class: 'col col-12' }, null, null, ' ',
-  el('h1', 'Fræðslumyndbandaleigan')))));
+  // const header = element('header', { class: 'frontpage__header' }, null, null, '',
+  // element('div', { class: 'grid'}, null, null, ' ',
+  // element('div', { class: 'row' }, null, null, ' ',
+  // element('div', { class: 'col col-12' }, null, null, ' ',
+  // el('h1', `Fræðslumyndbandaleigan`)))));
 
   const footer = el('footer', ' ',
   element('div', { class: 'grid' }, null, null, ' ',
@@ -17,7 +17,7 @@ export async function frontpage() {
   element('div', { class: 'col col-12' }, null, null, ' ',
   el('p', '©Fræðslumyndbandaleigan')))));
 
-  frontpageBody.appendChild(header);
+  // frontpageBody.appendChild(header);
   frontpageBody.appendChild(main);
   frontpageBody.appendChild(footer);
 
@@ -33,7 +33,7 @@ export async function frontpage() {
     const category = el('section',
       element('div', { class: 'grid' }, null,null, ' ',
         element('div', { class: 'row' }, null, null, ' ',
-          element('div', { class: 'col col-12' }, null, null, ' ',
+          element('div', { class: 'col col-12 offset-col-md-1 col-md-10' }, null, null, ' ',
             element('h2', { class: 'category__title' }, null, null, `${categories.title}`))),
         videoRow,
         element('div', { class: 'line-container' }, null, null, ' ',
@@ -46,7 +46,7 @@ export async function frontpage() {
         debugger
         const rCheck = isRelated(catVidRel, id);
         if (rCheck) {
-        const video = element('div', { class: 'col col-4 col-sm-12' }, null, null, ' ',
+        const video = element('div', { class: 'col col-4 offset-col-md-1 col-md-10' }, null, null, ' ',
           element('div', { class: 'card' }, null, null, ' ' ,
             element('a', { href: `/pages/video.html?video=${id}`, class: 'img__container' }, null, null, ' ',
               element('img', { src: videos.poster, class: 'card__poster' }, null, null, ' '),

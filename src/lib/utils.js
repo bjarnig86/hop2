@@ -105,6 +105,47 @@ export function pauseVid() {
   playIcon.classList.replace('video__button-hidden', 'video__button-visible');
 }
 
+export function muteVid() {
+  const vid = document.querySelector('.video__poster');
+  vid.muted = true;
+
+  const mute = document.querySelector('#mute');
+  const unmute = document.querySelector('#unmute');
+  mute.classList.replace('button-visible', 'button-hidden');
+  unmute.classList.replace('button-hidden', 'button-visible');
+}
+
+export function unmuteVid() {
+  const vid = document.querySelector('.video__poster');
+  vid.muted = false;
+
+  const mute = document.querySelector('#mute');
+  const unmute = document.querySelector('#unmute');
+  unmute.classList.replace('button-visible', 'button-hidden');
+  mute.classList.replace('button-hidden', 'button-visible');
+}
+
+export function frwVid() {
+  const vid = document.querySelector('.video__poster');
+  vid.currentTime += 3;
+}
+
+export function backVid() {
+  const vid = document.querySelector('.video__poster');
+  vid.currentTime -= 3;
+}
+
+export function openFullscreen() {
+  const vid = document.querySelector('.video__poster');
+  if (vid.requestFullscreen) {
+    vid.requestFullscreen();
+  } else if (vid.webkitRequestFullscreen) { /* Safari */
+    vid.webkitRequestFullscreen();
+  } else if (vid.msRequestFullscreen) { /* IE11 */
+    vid.msRequestFullscreen();
+  }
+}
+
 export function isRelated(video, id) {
   if (video.length === 0) {
     return true;

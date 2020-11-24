@@ -8,7 +8,7 @@
 
   &__description {
     font-size: 1.25em;
-    margin-bottom: 20px;
+    margin-bottom: 2em;
   }
 
   &__poster__container {
@@ -20,7 +20,7 @@
   }
 
   &__poster__container > .play {
-    background-color: rgba(77, 75, 75, 0.7);
+    background-color: rgba(0, 0, 0, 0.2);
     height: 100px;
     padding: 20px;
     position: absolute;

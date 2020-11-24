@@ -1,4 +1,4 @@
-import { el, element, empty, formatDate, setDuration, isRelated, allRelated, playVid, pauseVid } from './utils';
+import { el, element, empty, formatDate, setDuration, isRelated, allRelated, playVid, pauseVid, muteVid, unmuteVid, frwVid, backVid, openFullscreen } from './utils';
 import { fetchVideo } from './api';
 
 export async function playVideo(videoID) {
@@ -22,7 +22,7 @@ video.forEach(videos => {
     const player = element('section', { class: 'video'}, null, null, ' ',
         element('div', { class: 'grid' }, null, null, ' ',
         element('div', { class: 'row' }, null, null, ' ',
-        element('div', { class: 'col col-12' }, null, null, ' ',
+        element('div', { class: 'col col-12 offset-col-md-1 col-md-10' }, null, null, ' ',
         element('div', { class: 'video__poster__container' }, null, null, ' ',
         element('video', { src: `/${videos.video}` , class: 'video__poster', id: 'video' }, { click: playVid }, null, ' '),
         element('img', { src: '/img/play.svg', class: 'play video__button-visible', id: 'playIcon' }, { click: playVid }, null, ' ')))),
@@ -32,17 +32,17 @@ video.forEach(videos => {
 
     const controls = element('div', { class: 'col col-12' }, null, null, ' ',
         element('div', { class: 'controls' }, null, null, ' ',
-        element('img', { id: 'back', src: '/img/back.svg', alt: 'back' }, null, null, ' '),
+        element('img', { id: 'back', src: '/img/back.svg', alt: 'back' }, { click: backVid }, null, ' '),
         element('img', { id: 'play', src: '/img/play.svg', class: 'button-visible', alt: 'play' }, { click: playVid }, null, ' '),
         element('img', { id: 'pause', src: '/img/pause.svg', class: 'button-hidden', alt: 'pause' }, { click: pauseVid }, null, ' '),
-        element('img', { id: 'mute', src: '/img/mute.svg', class: 'button-visible', alt: 'mute' }, null, null, ' '),
-        element('img', { id: 'unmute', src: '/img/unmute.svg', class: 'button-hidden', alt: 'unmute' }, null, null, ' '),
-        element('img', { id: 'fullscreen', src: '/img/fullscreen.svg', alt: 'fullscreen' }, null, null, ' '),
-        element('img', { id: 'next', src: '/img/next.svg', alt: 'next' }, null, null, ' ')));
+        element('img', { id: 'mute', src: '/img/mute.svg', class: 'button-visible', alt: 'mute' }, { click: muteVid }, null, ' '),
+        element('img', { id: 'unmute', src: '/img/unmute.svg', class: 'button-hidden', alt: 'unmute' }, { click: unmuteVid }, null, ' '),
+        element('img', { id: 'fullscreen', src: '/img/fullscreen.svg', alt: 'fullscreen' }, { click: openFullscreen }, null, ' '),
+        element('img', { id: 'next', src: '/img/next.svg', alt: 'next' }, { click: frwVid }, null, ' ')));
 
     rowControls.appendChild(controls);
 
-    const info = element('div', { class: 'col col-12' }, null, null, ' ',
+    const info = element('div', { class: 'col col-12 offset-col-md-1 col-md-10' }, null, null, ' ',
     element('p', { class: 'video__description' }, null, null, `${videos.description}`));
 
     rowInfo.appendChild(info);
@@ -51,7 +51,7 @@ video.forEach(videos => {
     const relatedVideos = element('section', { class: 'related' }, null, null, ' ',
             element('div', { class: 'grid' }, null, null, ' ',
             element('div', { class: 'row' }, null, null, ' ',
-            element('div', { class: 'col col-12' }, null, null, ' ',
+            element('div', { class: 'col col-12 offset-col-md-1 col-md-10' }, null, null, ' ',
             element('h2', { class: 'related__videos' }, null, null, 'Tengd myndbönd',))),
             relatedRow,
             element('div', { class: 'line-container' }, null, null, ' ',
@@ -64,7 +64,7 @@ video.forEach(videos => {
       const id = videos.id;
       const rCheck = isRelated(related, id);
       if (rCheck) {
-      const video = element('div', { class: 'col col-4 col-sm-12' }, null, null, ' ',
+      const video = element('div', { class: 'col col-4 offset-col-md-1 col-md-10' }, null, null, ' ',
         element('div', { class: 'card' }, null, null, ' ' ,
           element('a', { href: `/pages/video.html?video=${id}`, class: 'img__container' }, null, null, ' ',
             element('img', { src: `/${videos.poster}`, class: 'card__poster' }, null, null, ' '),
