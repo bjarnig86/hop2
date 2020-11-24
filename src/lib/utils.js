@@ -71,14 +71,16 @@ export function empty(el) {
 }
 
 //Föll fyrir takka undir myndbandi á video síðu
-var vid = document.getElementById('.video__poster');
 
-function playVid() {
-    vid.play();
+
+export function playVid() {
+  const vid = document.getElementById('video');
+  vid.play();
 }
 
-function pauseVid() {
-    vid.pause();
+export function pauseVid() {
+  var vid = document.getElementById('video');
+  vid.pause();
 }
 
 export function isRelated(video, id) {
