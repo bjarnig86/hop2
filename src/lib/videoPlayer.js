@@ -46,11 +46,16 @@ video.forEach(videos => {
     element('p', { class: 'video__description' }, null, null, `${videos.description}`));
 
     rowInfo.appendChild(info);
-
+    const line = element('hr', { class: 'line col col-10 offset-col-1' }, null, null, ' ');
     const relatedRow = element('div', { class: 'row related-row' }, null, null, ' ');
     const relatedVideos = element('section', { class: 'related' }, null, null, ' ',
             element('div', { class: 'grid' }, null, null, ' ',
-            relatedRow));
+            element('div', { class: 'row' }, null, null, ' ',
+            element('div', { class: 'col col-12' }, null, null, ' ',
+            element('h2', { class: 'related__videos' }, null, null, 'Tengd myndbönd',))),
+            relatedRow,
+            element('div', { class: 'line-container' }, null, null, ' ',
+            line)));
     body.appendChild(relatedVideos);
 
     const related = videos.related;
@@ -61,7 +66,7 @@ video.forEach(videos => {
       if (rCheck) {
       const video = element('div', { class: 'col col-4 col-sm-12' }, null, null, ' ',
         element('div', { class: 'card' }, null, null, ' ' ,
-          element('div', { class: 'img__container' }, null, null, ' ',
+          element('a', { href: `/pages/video.html?video=${id}`, class: 'img__container' }, null, null, ' ',
             element('img', { src: `/${videos.poster}`, class: 'card__poster' }, null, null, ' '),
             element('p', { class: 'img__duration' }, null, null, `${setDuration(videos.duration)}`)),
           element('h3', { class: 'card__title' }, null, null, `${videos.title}`),
@@ -69,6 +74,13 @@ video.forEach(videos => {
           relatedRow.appendChild(video);
         }
       });
+
+      const footer = el('footer', ' ',
+          element('div', { class: 'grid' }, null, null, ' ',
+          element('div', { class: 'row' }, null, null, ' ',
+          element('div', { class: 'col col-12' }, null, null, ' ',
+          element('a', { href: '/index.html' }, null, null, 'Til baka')))));
+          body.appendChild(footer);
     }
   });
 }
