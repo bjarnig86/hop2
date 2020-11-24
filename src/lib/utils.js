@@ -70,6 +70,17 @@ export function empty(el) {
   }
 }
 
+//Föll fyrir takka undir myndbandi á video síðu
+var vid = document.getElementById('.video__poster');
+
+function playVid() {
+    vid.play();
+}
+
+function pauseVid() {
+    vid.pause();
+}
+
 export function isRelated(video, id) {
   if (video.length === 0) {
     return true;
