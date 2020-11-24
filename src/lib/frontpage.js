@@ -1,7 +1,7 @@
-import { el, element, empty, formatDate, setDuration } from './utils';
+import { el, element, empty, formatDate, setDuration, isRelated } from './utils';
 import { fetchVideo } from './api';
 
-export function frontpage() {
+export async function frontpage() {
   const main = el('main', ' ');
   const frontpageBody = document.querySelector('body');
 
@@ -21,7 +21,7 @@ export function frontpage() {
   frontpageBody.appendChild(main);
   frontpageBody.appendChild(footer);
 
-  const data = fetchVideo();
+  const data = await fetchVideo();
   console.log(data);
   console.log(data.categories);
 
@@ -43,11 +43,12 @@ export function frontpage() {
       data.videos.forEach(videos => {
         // const related = videos.related;
         const id = videos.id;
+        debugger
         const rCheck = isRelated(catVidRel, id);
         if (rCheck) {
         const video = element('div', { class: 'col col-4 col-sm-12' }, null, null, ' ',
           element('div', { class: 'card' }, null, null, ' ' ,
-            element('div', { class: 'img__container' }, null, null, ' ',
+            element('a', { href: `/pages/video.html?video=${id}`, class: 'img__container' }, null, null, ' ',
               element('img', { src: videos.poster, class: 'card__poster' }, null, null, ' '),
               element('p', { class: 'img__duration' }, null, null, `${setDuration(videos.duration)}`)),
             element('h3', { class: 'card__title' }, null, null, `${videos.title}`),

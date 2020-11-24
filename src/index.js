@@ -1,48 +1,25 @@
 import { fetchVideo } from './lib/api';
-import { el, element, empty, isRelated, formatDate , setDuration, playVid } from './lib/utils';
+import { el, element, empty, isRelated, formatDate , setDuration, playVid, allRelated } from './lib/utils';
 import { frontpage } from './lib/frontpage';
+import { playVideo } from './lib/videoPlayer';
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const data = await fetchVideo();
-  console.log(data);
-  const videos = data.videos;
-  console.log(videos[0].title);
+  const isFrontpage = document.querySelector('body').classList.contains('frontpage');
 
-  const body = document.querySelector('body');
+  if (isFrontpage) {
+    await frontpage();
+    console.log('forsíða')
+  } else {
+    console.log('video síða')
+    const querystring = new URLSearchParams(window.location.search);
+    const id = querystring.get('video');
+    console.log('birta video id = ', id)
 
-  const header = element('header', { class: 'frontpage__header' }, null, null, '',
-  element('div', { class: 'grid'}, null, null, ' ',
-  element('div', { class: 'row' }, null, null, ' ',
-  element('div', { class: 'col col-12' }, null, null, ' ',
-  el('h1', `${ videos[0].title }`)))));
-  body.appendChild(header);
+    const json = await fetchVideo();
+    console.log(json);
+    const video = json.videos.find(i => i.id === parseInt(id, 10));
+    const videoID = video.id;
+    await playVideo(videoID);
+  }
 
-  const rowControls = element('div', { class: 'row controls-row' }, null, null, ' ');
-  const player = element('section', { class: 'video'}, null, null, ' ',
-                  element('div', { class: 'grid' }, null, null, ' ',
-                  element('div', { class: 'row' }, null, null, ' ',
-                  element('div', { class: 'col col-12' }, null, null, ' ',
-                  element('div', { class: 'video__poster__container' }, null, null, ' ',
-                  element('video', { src: videos[0].video, class: 'video__poster', id: 'video' }, null, null, ' '),
-                  element('img', { src: './img/play.svg', class: 'play' }, null, null, ' ')))),
-                  rowControls));
-
-  body.appendChild(player);
-
-  const controls = element('div', { class: 'col col-12' }, null, null, ' ',
-  element('div', { class: 'controls' }, null, null, ' ',
-  element('img', { id: 'back', src: '../img/back.svg', alt: 'back' }, null, null, ' '),
-  element('img', { id: 'play', src: '../img/play.svg', class: 'button-visible', alt: 'play' }, null, null, ' '),
-  element('img', { id: 'pause', src: '../img/pause.svg', class: 'button-hidden', alt: 'pause' }, null, null, ' '),
-  element('img', { id: 'mute', src: '../img/mute.svg', class: 'button-visible', alt: 'mute' }, null, null, ' '),
-  element('img', { id: 'unmute', src: '../img/unmute.svg', class: 'button-hidden', alt: 'unmute' }, null, null, ' '),
-  element('img', { id: 'fullscreen', src: '../img/fullscreen.svg', alt: 'fullscreen' }, null, null, ' '),
-  element('img', { id: 'next', src: '../img/next.svg', alt: 'next' }, null, null, ' ')));
-
-  rowControls.appendChild(controls);
-
-  const play = document.getElementById('play');
-  console.log(play);
-  play.addEventListener('click', playVid());
-  const pause = document.getElementById('pause');
 });

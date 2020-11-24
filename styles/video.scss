@@ -29,4 +29,12 @@
   &__poster {
     width: 100%;
   }
+
+  &__button-visible {
+    display: block;
+  }
+
+  &__button-hidden {
+    display: none;
+  }
 }

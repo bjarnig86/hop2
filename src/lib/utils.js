@@ -1,6 +1,7 @@
 import {
   format
 } from "date-fns";
+import { playVideo } from "./videoPlayer";
 
 /**
  * Create an element with attributes and events, and append elements or
@@ -72,15 +73,36 @@ export function empty(el) {
 
 //Föll fyrir takka undir myndbandi á video síðu
 
-
 export function playVid() {
-  const vid = document.getElementById('video');
+  const vid = document.querySelector('.video__poster');
   vid.play();
+
+  vid.addEventListener('click', (e) => {
+    pauseVid()
+  });
+
+  const playIcon = document.querySelector('#playIcon');
+  const pause = document.querySelector('#pause');
+  const play = document.querySelector('#play');
+  play.classList.replace('button-visible', 'button-hidden');
+  pause.classList.replace('button-hidden', 'button-visible');
+  playIcon.classList.replace('video__button-visible', 'video__button-hidden');
 }
 
 export function pauseVid() {
-  var vid = document.getElementById('video');
+  const vid = document.querySelector('.video__poster');
   vid.pause();
+
+  vid.addEventListener('click', (e) => {
+    playVid()
+  });
+
+  const playIcon = document.querySelector('#playIcon');
+  const pause = document.querySelector('#pause');
+  const play = document.querySelector('#play');
+  pause.classList.replace('button-visible', 'button-hidden');
+  play.classList.replace('button-hidden', 'button-visible');
+  playIcon.classList.replace('video__button-hidden', 'video__button-visible');
 }
 
 export function isRelated(video, id) {
@@ -96,8 +118,8 @@ export function isRelated(video, id) {
 }
 
 export function allRelated(id, related) {
-  for (let i = 0; i < id.length; i++) {
-    for (let j = 0; j < related.length; j++) {
+  for (let i = 0; i < id.length(); i++) {
+    for (let j = 0; j < related.length(); j++) {
       id[i] = related[j];
       return true;
     }

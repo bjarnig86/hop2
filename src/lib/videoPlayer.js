@@ -1,23 +1,74 @@
+import { el, element, empty, formatDate, setDuration, isRelated, allRelated, playVid, pauseVid } from './utils';
+import { fetchVideo } from './api';
+
+export async function playVideo(videoID) {
+
 const data = await fetchVideo();
-  console.log(data);
-  const videos = data.videos;
-  console.log(videos[0].title);
+const video = data.videos;
 
-  const body = document.querySelector('body');
+const body = document.querySelector('body');
 
-  const header = element('header', { class: 'frontpage__header' }, null, null, '',
-  element('div', { class: 'grid'}, null, null, ' ',
-  element('div', { class: 'row' }, null, null, ' ',
-  element('div', { class: 'col col-12' }, null, null, ' ',
-  el('h1', `${ videos[0].title }`)))));
-  body.appendChild(header);
+video.forEach(videos => {
+  if (videos.id === videoID) {
+    const header = element('header', { class: 'frontpage__header' }, null, null, '',
+    element('div', { class: 'grid'}, null, null, ' ',
+    element('div', { class: 'row' }, null, null, ' ',
+    element('div', { class: 'col col-12' }, null, null, ' ',
+    el('h1', `${ videos.title }`)))));
+    body.appendChild(header);
 
-  const player = element('section', { class: 'video'}, null, null, ' ',
-  element('div', { class: 'grid' }, null, null, ' ',
-  element('div', { class: 'row' }, null, null, ' ',
-  element('div', { class: 'col col-12' }, null, null, ' ',
-  element('div', { class: 'video__poster__container' }, null, null, ' ',
-  element('video', { src: videos[0].video, class: 'video__poster' }, null, null, ' '),
-  element('img', { src: './img/play.svg', class: 'play' }, null, null, ' '))))));
+    const rowControls = element('div', { class: 'row controls-row' }, null, null, ' ');
+    const rowInfo = element('div', { class: 'row info' }, null, null, ' ');
+    const player = element('section', { class: 'video'}, null, null, ' ',
+        element('div', { class: 'grid' }, null, null, ' ',
+        element('div', { class: 'row' }, null, null, ' ',
+        element('div', { class: 'col col-12' }, null, null, ' ',
+        element('div', { class: 'video__poster__container' }, null, null, ' ',
+        element('video', { src: `/${videos.video}` , class: 'video__poster', id: 'video' }, { click: playVid }, null, ' '),
+        element('img', { src: '/img/play.svg', class: 'play video__button-visible', id: 'playIcon' }, { click: playVid }, null, ' ')))),
+        rowControls,rowInfo));
 
-  body.appendChild(player);
+    body.appendChild(player);
+
+    const controls = element('div', { class: 'col col-12' }, null, null, ' ',
+        element('div', { class: 'controls' }, null, null, ' ',
+        element('img', { id: 'back', src: '/img/back.svg', alt: 'back' }, null, null, ' '),
+        element('img', { id: 'play', src: '/img/play.svg', class: 'button-visible', alt: 'play' }, { click: playVid }, null, ' '),
+        element('img', { id: 'pause', src: '/img/pause.svg', class: 'button-hidden', alt: 'pause' }, { click: pauseVid }, null, ' '),
+        element('img', { id: 'mute', src: '/img/mute.svg', class: 'button-visible', alt: 'mute' }, null, null, ' '),
+        element('img', { id: 'unmute', src: '/img/unmute.svg', class: 'button-hidden', alt: 'unmute' }, null, null, ' '),
+        element('img', { id: 'fullscreen', src: '/img/fullscreen.svg', alt: 'fullscreen' }, null, null, ' '),
+        element('img', { id: 'next', src: '/img/next.svg', alt: 'next' }, null, null, ' ')));
+
+    rowControls.appendChild(controls);
+
+    const info = element('div', { class: 'col col-12' }, null, null, ' ',
+    element('p', { class: 'video__description' }, null, null, `${videos.description}`));
+
+    rowInfo.appendChild(info);
+
+    const relatedRow = element('div', { class: 'row related-row' }, null, null, ' ');
+    const relatedVideos = element('section', { class: 'related' }, null, null, ' ',
+            element('div', { class: 'grid' }, null, null, ' ',
+            relatedRow));
+    body.appendChild(relatedVideos);
+
+    const related = videos.related;
+
+    data.videos.forEach(videos => {
+      const id = videos.id;
+      const rCheck = isRelated(related, id);
+      if (rCheck) {
+      const video = element('div', { class: 'col col-4 col-sm-12' }, null, null, ' ',
+        element('div', { class: 'card' }, null, null, ' ' ,
+          element('div', { class: 'img__container' }, null, null, ' ',
+            element('img', { src: `/${videos.poster}`, class: 'card__poster' }, null, null, ' '),
+            element('p', { class: 'img__duration' }, null, null, `${setDuration(videos.duration)}`)),
+          element('h3', { class: 'card__title' }, null, null, `${videos.title}`),
+          element('p', { class: 'card__created' }, null, null, `${formatDate(videos.created)}`)));
+          relatedRow.appendChild(video);
+        }
+      });
+    }
+  });
+}

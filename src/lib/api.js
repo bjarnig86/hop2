@@ -1,4 +1,4 @@
-const url = '.../.././videos.json';
+const url = '/videos.json';
 
 export async function fetchVideo() {
     let response;
