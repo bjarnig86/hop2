@@ -1,4 +1,5 @@
 /* https://css-tricks.com/building-css-grid-overlay/ */
+/* stylelint-disable */
 :root {
   --offset: 10px;
   --max_width: 1400px;
@@ -17,7 +18,7 @@
       transparent var(--repeating-width)
       );
 }
-/*steinunn*/
+
 html {
   position: relative;
 }
