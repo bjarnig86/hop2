@@ -56,7 +56,7 @@ export async function frontpage() {
         class: 'row',
       }, null, null, ' ',
       element('div', {
-        class: 'col col-12 offset-col-md-1 col-md-10',
+        class: 'col col-12 col-sm-12',
       }, null, null, ' ',
       element('h2', {
         class: 'category__title',
@@ -74,7 +74,7 @@ export async function frontpage() {
       const rCheck = isRelated(catVidRel, id);
       if (rCheck) {
         const video = element('div', {
-          class: 'col col-4 offset-col-md-1 col-md-10',
+          class: 'col col-4 col-sm-12',
         }, null, null, ' ',
         element('div', {
           class: 'card',

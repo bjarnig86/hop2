@@ -28,7 +28,7 @@ export async function playVideo(videoID) {
       const header = element('header', { class: 'frontpage__header' }, null, null, '',
         element('div', { class: 'grid' }, null, null, ' ',
           element('div', { class: 'row' }, null, null, ' ',
-            element('div', { class: 'col col-12' }, null, null, ' ',
+            element('div', { class: 'col col-12 col-sm-12' }, null, null, ' ',
               el('h1', `${videos.title}`)))));
       body.appendChild(header);
 
@@ -37,7 +37,7 @@ export async function playVideo(videoID) {
       const player = element('section', { class: 'video' }, null, null, ' ',
         element('div', { class: 'grid' }, null, null, ' ',
           element('div', { class: 'row' }, null, null, ' ',
-            element('div', { class: 'col col-12 offset-col-md-1 col-md-10' }, null, null, ' ',
+            element('div', { class: 'col col-12 col-sm-12' }, null, null, ' ',
               element('div', { class: 'video__poster__container' }, null, null, ' ',
                 element('video', { src: `/${videos.video}`, class: 'video__poster', id: 'video' }, { click: playVid }, null, ' '),
                 element('img', { src: '/img/play.svg', class: 'play video__button-visible', id: 'playIcon' }, { click: playVid }, null, ' ')))),
@@ -65,7 +65,7 @@ export async function playVideo(videoID) {
 
       rowControls.appendChild(controls);
 
-      const info = element('div', { class: 'col col-12 offset-col-md-1 col-md-10' }, null, null, ' ',
+      const info = element('div', { class: 'col col-12 col-sm-12' }, null, null, ' ',
         element('p', { class: 'video__description' }, null, null, `${videos.description}`));
 
       rowInfo.appendChild(info);
@@ -74,7 +74,7 @@ export async function playVideo(videoID) {
       const relatedVideos = element('section', { class: 'related' }, null, null, ' ',
         element('div', { class: 'grid' }, null, null, ' ',
           element('div', { class: 'row' }, null, null, ' ',
-            element('div', { class: 'col col-12 offset-col-md-1 col-md-10' }, null, null, ' ',
+            element('div', { class: 'col col-12 col-sm-12' }, null, null, ' ',
               element('h2', { class: 'related__videos' }, null, null, 'Tengd myndbönd'))),
           relatedRow,
           element('div', { class: 'line-container' }, null, null, ' ',
@@ -87,7 +87,7 @@ export async function playVideo(videoID) {
         const { id } = videos;
         const rCheck = isRelated(related, id);
         if (rCheck) {
-          const video = element('div', { class: 'col col-4 offset-col-md-1 col-md-10' }, null, null, ' ',
+          const video = element('div', { class: 'col col-4 col-sm-12' }, null, null, ' ',
             element('div', { class: 'card' }, null, null, ' ',
               element('a', { href: `/pages/video.html?video=${id}`, class: 'img__container' }, null, null, ' ',
                 element('img', { src: `/${videos.poster}`, class: 'card__poster' }, null, null, ' '),
