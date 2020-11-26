@@ -128,8 +128,8 @@ Skil skulu innihalda:
 * pages
   * Mappa með video.html skjalinu
 * src
- * Mappa með java scipt af index síðunni og video
- * lib
+  * Mappa með java scipt af index síðunni og video
+* lib
   * Mappa með fleiri java scriptum svo sem api, frontpage, utils og videoplayer.
 * styles
   * Mappa með öllu scss-inu
@@ -138,18 +138,18 @@ Skil skulu innihalda:
   * Mappa með myndum og myndböndum
 
 ## Skipulag scss
-  * card
-   * .card, h3, poster, .img__container, img__container p, img, .line-container og created.
-  * config
-   * Einfaldar breytur til að segja til um colums og max breidd
-  * controls
-   * .controls, > img, .button-hidden og .button-visible
-  * global
-   * (*) fyrir allt, header, h1, h2, h3, body og footer.
-  * grid
-   * .grid, .row, .col , og svo breytur eftir stærð skjás.
-  * video
-   * &__title, &__description, &__poster__container, &__poster__container > play, &__poster, &__button-cisible og &__button-hidden.
+* card
+  * .card, h3, poster, .img__container, img__container p, img, .line-container og created.
+* config
+ * Einfaldar breytur til að segja til um colums og max breidd
+* controls
+ * .controls, > img, .button-hidden og .button-visible
+* global
+ * (*) fyrir allt, header, h1, h2, h3, body og footer.
+* grid
+ * .grid, .row, .col , og svo breytur eftir stærð skjás.
+* video
+  * &__title, &__description, &__poster__container, &__poster__container > play, &__poster, &__button-cisible og &__button-hidden.
   
 
 
