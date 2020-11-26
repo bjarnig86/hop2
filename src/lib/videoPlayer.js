@@ -28,7 +28,7 @@ export async function playVideo(videoID) {
       const header = element('header', { class: 'frontpage__header' }, null, null, '',
         element('div', { class: 'grid' }, null, null, ' ',
           element('div', { class: 'row' }, null, null, ' ',
-            element('div', { class: 'col col-12' }, null, null, ' ',
+            element('div', { class: 'col col-12 col-sm-12' }, null, null, ' ',
               el('h1', `${videos.title}`)))));
       body.appendChild(header);
 

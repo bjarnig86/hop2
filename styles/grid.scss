@@ -19,11 +19,6 @@
   padding-left: ($gutter / 2);
   padding-right: ($gutter / 2);
   width: 100%;
-
-  @media (max-width:499px) {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
 }
 
 @for $i from 1 through $columns {
