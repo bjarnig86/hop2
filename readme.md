@@ -120,10 +120,43 @@ Skil skulu innihalda:
   * `Tobbasn`
   * `thth168`
 
-## Einkunn
+## Skipting í möppur
+* Dist 
+  * Mappa með bundle.js og bundle.js.map
+* img 
+  * Mappa með mynum af tökkum svo sem play og pause
+* pages
+  * Mappa með video.html skjalinu
+* src
+ * Mappa með java scipt af index síðunni og video
+ * lib
+  * Mappa með fleiri java scriptum svo sem api, frontpage, utils og videoplayer.
+* styles
+  * Mappa með öllu scss-inu
+    * card, config, controls, global, grid og video.
+* videos 
+  * Mappa með myndum og myndböndum
 
-Sett verða fyrir tíu minni verkefni þar sem átta bestu gilda 5% hvert, samtals 40% af lokaeinkunn.
+## Skipulag scss
+  * card
+   * .card, h3, poster, .img__container, img__container p, img, .line-container og created.
+  * config
+   * Einfaldar breytur til að segja til um colums og max breidd
+  * controls
+   * .controls, > img, .button-hidden og .button-visible
+  * global
+   * (*) fyrir allt, header, h1, h2, h3, body og footer.
+  * grid
+   * .grid, .row, .col , og svo breytur eftir stærð skjás.
+  * video
+   * &__title, &__description, &__poster__container, &__poster__container > play, &__poster, &__button-cisible og &__button-hidden.
+  
 
-Sett verða fyrir tvö hópverkefni þar sem hvort um sig gildir 10%, samtals 20% af lokaeinkunn.
 
-> Útgáfa 0.1
+
+
+## Hverjir unnu verkefnið
+
+Bjarni Guðmundsson (bjg17@hi.is) bjarnig86
+Steinunn María Egilsdóttir (sme15@hi.is) steinunnmaria
+Linda Björg Logadóttir  (lbl8@hi.is) lbl8
