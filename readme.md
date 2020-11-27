@@ -6,6 +6,15 @@ Eftir að búið er að sækja verkefnið af github er mikilvægt að sækja ým
   * npm run dev: keyrir verkefnið og opnar síðuna í nýjum glugga í vafra.
   * npm run lint: keyrir kóða verkefnis í gegnum stylelint sem eru staðlar fyrir uppsetningu CSS og SCSS kóða.
 
+## Tæki og tól 
+* stylelint
+* eslint
+* babel
+* rollup
+* browser-sync
+* concurrently 
+
+
 ## Lýsing verkefnis
 Verkefnið er skiðt upp í tvær síður. Heimasíðan saman stendur af þremur flokkum af myndböndum. Ef smellt er á mynband birtist síða með því myndbandi ásamt tengdum myndböndum.
 
@@ -34,13 +43,13 @@ Verkefnið er unnið í HTML, CSS og Javascript þar sem CSS hlutinn er útfær�
 * card
   * .card, h3, poster, .img__container, img__container p, img, .line-container og created.
 * config
- * Einfaldar breytur til að segja til um colums og max breidd
+  * Einfaldar breytur til að segja til um colums og max breidd
 * controls
- * .controls, > img, .button-hidden og .button-visible
+  * .controls, > img, .button-hidden og .button-visible
 * global
- * (*) fyrir allt, header, h1, h2, h3, body og footer.
+  * (*) fyrir allt, header, h1, h2, h3, body og footer.
 * grid
- * .grid, .row, .col , og svo breytur eftir stærð skjás.
+  * .grid, .row, .col , og svo breytur eftir stærð skjás.
 * video
   * &__title, &__description, &__poster__container, &__poster__container > play, &__poster, &__button-cisible og &__button-hidden.
 
